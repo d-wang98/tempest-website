@@ -38,7 +38,7 @@ const features: Feature[] = [
   {
     title: "Save on fees when making high frequent transactions.",
     body:
-      "payments in stablecoin are extremely low compared to traditional fiat ramps.",
+      "Payments in stablecoin are extremely low compared to traditional fiat ramps.",
     icon: saveOnFeesIcon,
   },
   {
