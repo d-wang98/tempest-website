@@ -13,7 +13,7 @@ export default function Page() {
       <Hero />
       <TrustSection />
       <HeadlineDivider />
-      <Calculator />
+      {/* <Calculator /> */}
       <InfoBlocks />
       <Closing />
     </main>

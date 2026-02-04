@@ -35,24 +35,24 @@ const features: Feature[] = [
       "Tempest is built as a self-custody wallet powered by MPC signatures. Users and businesses retain full control of their funds—Tempest never takes custody.",
     icon: nonCustodialByDesignIcon,
   },
-  {
-    title: "Save on fees when making high frequent transactions.",
-    body:
-      "Payments in stablecoin are extremely low compared to traditional fiat ramps.",
-    icon: saveOnFeesIcon,
-  },
+  // {
+  //   title: "Save on fees when making high frequent transactions.",
+  //   body:
+  //     "Payments in stablecoin are extremely low compared to traditional fiat ramps.",
+  //   icon: saveOnFeesIcon,
+  // },
   {
     title: "Seamless Stablecoin Payments",
     body:
       "Pay across chains and tokens using existing balances. Tempest handles routing, conversion, and settlement behind the scenes.",
     icon: smartStablecoinPaymentsIcon,
   },
-  {
-    title: "Accounting‑Native Settlement",
-    body:
-      "Sync automatically with ERP, accounting, and tax software once funds are received—keeping records clean and auditable.",
-    icon: accountingNativeSettlementIcon,
-  },
+  // {
+  //   title: "Accounting‑Native Settlement",
+  //   body:
+  //     "Sync automatically with ERP, accounting, and tax software once funds are received—keeping records clean and auditable.",
+  //   icon: accountingNativeSettlementIcon,
+  // },
   {
     title: "Unified Identity Across Chains",
     body:
@@ -76,7 +76,7 @@ export function TrustSection() {
             How Tempest Works
           </h2>
           <p className="mt-4 text-[16px] leading-relaxed text-white">
-            We abstract exchanges, blockchains, and wallets into a single flow—so stablecoins can be onboarded, sent, and settled as easily as traditional payments, while remaining fully on‑chain.
+            We abstract exchanges, blockchains, and wallets into a single flow—so stablecoins can be onboarded, sent, and settled as easily while unlocking the capabilities of on‑chain tools.
           </p>
         </div>
 
