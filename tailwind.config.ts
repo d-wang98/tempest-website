@@ -5,7 +5,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["ui-sans-serif", "system-ui", "SF Pro Display", "Inter", "Segoe UI", "Roboto", "Arial", "sans-serif"]
+        sans: ["Zalando Sans Variable", "ui-sans-serif", "system-ui", "sans-serif"],
+        title: ["Zalando Sans Variable", "ui-sans-serif", "system-ui", "sans-serif"],
       }
     },
   },

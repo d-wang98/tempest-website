@@ -1,11 +1,6 @@
-import { Montserrat } from "next/font/google";
+import "@fontsource-variable/zalando-sans";
 import "./globals.css";
 import type { Metadata } from "next";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-});
 
 export const metadata: Metadata = {
   title: "Tempest",
@@ -18,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={montserrat.variable}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
