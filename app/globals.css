@@ -29,6 +29,17 @@ h1, h2, h3,
   font-variation-settings: "wdth" 112;
 }
 
+/* Scroll reveal: pop in as sections enter view */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-reveal.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* A soft grain to mimic the design vibe */
 .grain {
   position: absolute;

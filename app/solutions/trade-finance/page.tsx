@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Container } from "@/components/Container";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { ContactForm } from "@/components/ContactForm";
 
 export const metadata = {
   title: "Trade Finance | Tempest",
@@ -42,15 +44,18 @@ export default function TradeFinancePage() {
       </section>
 
       {/* Center headline */}
-      <section className="py-10">
-        <Container className="text-center">
-          <h2 className="text-gradient text-2xl md:text-3xl">
-            Automate. Settle — Faster and Smarter.
-          </h2>
-        </Container>
-      </section>
+      <ScrollReveal>
+        <section className="py-10">
+          <Container className="text-center">
+            <h2 className="text-gradient text-2xl md:text-3xl">
+              Automate. Settle — Faster and Smarter.
+            </h2>
+          </Container>
+        </section>
+      </ScrollReveal>
 
       {/* What You Get */}
+      <ScrollReveal>
       <section className="py-16">
         <Container className="grid gap-10 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-start">
           <div className="space-y-3">
@@ -132,8 +137,10 @@ export default function TradeFinancePage() {
           </div>
         </Container>
       </section>
+      </ScrollReveal>
 
       {/* How It Works */}
+      <ScrollReveal>
       <section className="py-16 border-t border-white/5 border-b">
         <Container className="space-y-10">
           <div className="flex items-baseline justify-between gap-4">
@@ -191,8 +198,10 @@ export default function TradeFinancePage() {
           </div>
         </Container>
       </section>
+      </ScrollReveal>
 
       {/* Who It Helps */}
+      <ScrollReveal>
       <section className="py-16">
         <Container className="space-y-8">
           <div className="flex items-baseline justify-between gap-4">
@@ -200,10 +209,7 @@ export default function TradeFinancePage() {
               <div className="text-xs uppercase tracking-[0.2em] text-white/60">
                 Who It Helps
               </div>
-              <p className="text-sm text-white/80">
-                Coordinate every party in a trade without adding more email
-                threads or spreadsheets.
-              </p>
+              
             </div>
           </div>
 
@@ -240,31 +246,27 @@ export default function TradeFinancePage() {
           </div>
         </Container>
       </section>
+      </ScrollReveal>
 
       {/* See It In Action */}
+      <ScrollReveal>
       <section id="see-it-in-action" className="py-16 border-t border-white/5">
-        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-white/60">
-              See It in Action
+        <Container>
+          <ContactForm>
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-white/60">
+                See It in Action
+              </div>
+              <p className="mt-3 text-sm text-white/80 max-w-xl">
+                Use Tempest to stand up automated, bank-grade trade workflows
+                without rebuilding your stack. See a live demo of programmable
+                settlement, documents, and controls for your lanes.
+              </p>
             </div>
-            <p className="mt-3 text-sm text-white/80 max-w-xl">
-              Use Tempest to stand up automated, bank-grade trade workflows
-              without rebuilding your stack. See a live demo of programmable
-              settlement, documents, and controls for your lanes.
-            </p>
-          </div>
-          <a
-            href="#get-started"
-            className="relative inline-flex items-center justify-center p-[1px] rounded-md overflow-hidden group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#489EFF] to-[#0050FF]" />
-            <div className="relative bg-[#0078FF]/80 px-4 py-2 rounded-[5px] text-sm font-semibold text-white hover:bg-[#0078FF]/90 transition">
-              Learn More
-            </div>
-          </a>
+          </ContactForm>
         </Container>
       </section>
+      </ScrollReveal>
     </main>
   );
 }
