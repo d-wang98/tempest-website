@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const TO_EMAILS = ["david@tempest-pay.com", "blidd@tempest-pay.com"] as const;
+const TO_EMAILS: string[] = ["david@tempest-pay.com", "blidd@tempest-pay.com"];
 
 export async function POST(request: Request) {
   try {
