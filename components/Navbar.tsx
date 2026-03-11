@@ -11,17 +11,14 @@ const nav = [
     ],
   },
   { label: "Product", href: "#product" },
-  { label: "Calculator", href: "#calculator" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Docs", href: "#docs" },
 ];
 
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50">
       <div className="relative">
-        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#1a1340]/80 to-transparent backdrop-blur-md" />
-        <Container className="relative flex h-20 items-center justify-between">
+        <div className="absolute inset-x-0 top-0 z-0 h-20 bg-gradient-to-b from-[#1a1340]/80 to-transparent backdrop-blur-md" />
+        <Container className="relative z-10 flex h-20 items-center justify-between">
           <Link href="/" className="group inline-flex items-center gap-2">
             <Logo />
             <span className="sr-only">Tempest Home</span>
@@ -37,13 +34,13 @@ export function Navbar() {
                   <span className="cursor-default text-sm text-white hover:text-white/80 transition">
                     {item.label}
                   </span>
-                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                    <div className="rounded-lg border border-white/10 bg-[#0a0a1a]/95 backdrop-blur-md py-2 min-w-[180px] shadow-xl">
+                  <div className="absolute left-0 top-full z-20 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="relative rounded-xl min-w-[200px] border border-white/15 bg-[#0a0a1a]/98 shadow-xl backdrop-blur-md py-1">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-2 text-sm text-white hover:bg-white/10 hover:text-white transition"
+                          className="block px-4 py-3 text-sm text-white/90 hover:text-white hover:bg-white/5 transition"
                         >
                           {child.label}
                         </Link>
