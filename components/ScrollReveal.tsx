@@ -10,6 +10,8 @@ type ScrollRevealProps = {
   threshold?: number;
   /** Trigger when element is this many pixels from viewport. e.g. 50 = trigger 50px before visible */
   rootMargin?: string;
+  /** Use scroll-driven animation (view timeline) when supported; falls back to intersection observer */
+  useScrollDrive?: boolean;
 };
 
 export function ScrollReveal({
@@ -17,6 +19,7 @@ export function ScrollReveal({
   className = "",
   threshold = 0.1,
   rootMargin = "0px 0px -40px 0px",
+  useScrollDrive = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -39,7 +42,7 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`scroll-reveal ${isVisible ? "scroll-reveal-visible" : ""} ${className}`}
+      className={`scroll-reveal ${useScrollDrive ? "scroll-reveal-drive" : ""} ${isVisible ? "scroll-reveal-visible" : ""} ${className}`}
     >
       {children}
     </div>
