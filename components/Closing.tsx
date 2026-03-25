@@ -5,7 +5,7 @@ export function Closing() {
     <section className="py-16 md:py-24">
       <Container>
         <div className="mx-auto max-w-none text-center">
-          <h2 className="text-gradient whitespace-nowrap text-3xl font-regular md:text-4xl">
+          <h2 className="text-gradient text-3xl font-regular md:text-3xl lg:text-4xl">
             Payments that feel familiar – without sacrificing control.
           </h2>
         </div>
