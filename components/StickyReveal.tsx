@@ -34,7 +34,7 @@ export function StickyReveal({
   bgVariant?: BgVariant;
 }) {
   const outerRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLElement | null>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
   const hiddenColor = dark ? "#4b5563" : "#d4d4d4";
 
   useEffect(() => {
@@ -111,7 +111,6 @@ export function StickyReveal({
               {label}
             </p>
           )}
-          {/* @ts-expect-error dynamic ref on polymorphic tag */}
           <Tag
             ref={headingRef}
             className={className}
