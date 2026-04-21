@@ -79,7 +79,7 @@ export function StickyReveal({
           style={{ color: hiddenColor, transition: "color 0.04s linear" }}
           aria-hidden="true"
         >
-          {char === " " ? "\u00A0" : char}
+          {char === " " ? " " : char}
         </span>
       );
     }
@@ -114,6 +114,7 @@ export function StickyReveal({
           <Tag
             ref={headingRef}
             className={className}
+            style={{ overflowWrap: "break-word" }}
             aria-label={text.replace(/\n/g, " ")}
           >
             {parts}

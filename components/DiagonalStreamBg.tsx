@@ -58,7 +58,8 @@ export function DiagonalStreamBg() {
       canvas.height = container.offsetHeight;
     };
     resize();
-    window.addEventListener("resize", resize, { passive: true });
+    const ro = new ResizeObserver(resize);
+    ro.observe(container);
 
     const onMove = (e: MouseEvent) => {
       const r = container.getBoundingClientRect();
@@ -76,7 +77,8 @@ export function DiagonalStreamBg() {
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
-      const totalLean = LEAN + (lerpMouseX.current - 0.5) * MOUSE_LEAN * 2;
+      const aspectScale = W > 0 && H > 0 ? Math.min(1, W / H) : 1;
+      const totalLean = (LEAN + (lerpMouseX.current - 0.5) * MOUSE_LEAN * 2) * aspectScale;
 
       for (const stream of STREAMS) {
         const baseX = stream.x * W;
@@ -103,7 +105,7 @@ export function DiagonalStreamBg() {
     rafRef.current = requestAnimationFrame(tick);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
       window.removeEventListener("mousemove", onMove);
       cancelAnimationFrame(rafRef.current);
     };
