@@ -80,8 +80,9 @@ export function DiagonalStreamBg() {
       const aspectScale = W > 0 && H > 0 ? Math.min(1, W / H) : 1;
       const totalLean = (LEAN + (lerpMouseX.current - 0.5) * MOUSE_LEAN * 2) * aspectScale;
 
+      const drift = H * totalLean;
       for (const stream of STREAMS) {
-        const baseX = stream.x * W;
+        const baseX = stream.x * (W + drift) - drift;
         // How many dots fit vertically (plus overflow on both ends)
         const dotsPerStream = Math.ceil(H / stream.dotSpacing) + 4;
         const travel = (frame * stream.speed + stream.phase) % stream.dotSpacing;
