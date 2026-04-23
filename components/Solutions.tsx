@@ -64,7 +64,7 @@ const tradeFinanceFeatures = [
 const steps = [
   {
     label: "Connect Documents",
-    desc: "Ingest trade docs from your platforms or upload directly—invoices, purchase orders, B/Ls, inspections, and more.",
+    desc: "Ingest trade docs from your platforms or upload directly: invoices, purchase orders, B/Ls, inspections, and more.",
   },
   {
     label: "Define Conditional Logic",
@@ -72,7 +72,7 @@ const steps = [
   },
   {
     label: "Automate Settlement",
-    desc: "Tempest executes stablecoin payments as each condition is met—partials, milestones, and final settlement included.",
+    desc: "Tempest executes stablecoin payments as each condition is met, including partials, milestones, and final settlement.",
   },
   {
     label: "Sync Finance Systems",
@@ -109,7 +109,7 @@ export function Solutions() {
         id="solutions"
         text="Payment flows built for your industry"
         label="Solutions"
-        description="Tempest lays the foundation for programmable, composable stablecoin workflows—conditional payments, automated settlement, and deep integration with financial and operational systems."
+        description="Tempest lays the foundation for programmable, composable stablecoin workflows: conditional payments, automated settlement, and deep integration with financial and operational systems."
         className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl"
         bg="#f9fafb"
         bgVariant="ripple"
@@ -136,7 +136,7 @@ export function Solutions() {
         {tab === "high-value" && (
           <ComingSoonTab
             title="High-Value Asset Settlement"
-            desc="Programmable payments for high-value retail—escrow, milestones, and seamless checkout. Launching soon."
+            desc="Programmable payments for high-value retail: escrow, milestones, and seamless checkout. Launching soon."
           />
         )}
         {tab === "more" && (
@@ -194,15 +194,15 @@ function TradeFinanceTab() {
               Trade Finance
             </span>
             <h3 className="text-3xl font-black leading-tight md:text-4xl">
-              Automate. Settle—
+              Automate. Settle.
               <br />
               <span className="text-brand-cyan">Faster and Smarter.</span>
             </h3>
             <p className="mt-4 text-base leading-relaxed text-white/65">
               Trade finance workflows are slowed down by manual checks, scattered
-              documents, and payment risk. Tempest lets you define the rules once—
-              then settlement, documents, and notifications run automatically in
-              the background.
+              documents, and payment risk. Tempest lets you define the rules once,
+              and then settlement, documents, and notifications run automatically
+              in the background.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a

@@ -30,7 +30,7 @@ export function Footer() {
             <LogoWhite />
             <p className="mt-4 text-sm leading-relaxed text-white/55 max-w-xs">
               The non-custodial stablecoin orchestration layer for modern
-              business. Accept, pay, and reconcile—with full confidence.
+              business. Accept, pay, and reconcile with full confidence.
             </p>
             <div className="mt-5 flex gap-3">
               <a

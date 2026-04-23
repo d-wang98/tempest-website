@@ -32,7 +32,7 @@ const features: Feature[] = [
   },
   {
     title: "Enterprise-Grade Security",
-    body: "Multi-party authorization rules maintain strict internal controls and prevent unauthorized fund movements—without sacrificing speed.",
+    body: "Multi-party authorization rules maintain strict internal controls and prevent unauthorized fund movements, without sacrificing speed.",
     accent: "bg-brand-navy/10 text-brand-navy",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -62,7 +62,7 @@ const features: Feature[] = [
   },
   {
     title: "ERP Connectivity",
-    body: "Built-in integration layers for major ERP systems synchronize trade data with your existing financial records—no manual re-entry.",
+    body: "Built-in integration layers for major ERP systems synchronize trade data with your existing financial records, with no manual re-entry.",
     accent: "bg-orange-50 text-orange-700",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -79,7 +79,7 @@ export function Features() {
         id="product"
         text="Everything your payments stack needs"
         label="Platform Capabilities"
-        description="We abstract exchanges, blockchains, and wallets into a single flow—so stablecoins can be onboarded, sent, and settled as easily while unlocking the full power of on-chain tools."
+        description="We abstract exchanges, blockchains, and wallets into a single flow so stablecoins can be onboarded, sent, and settled easily while unlocking the full power of on-chain tools."
         className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl"
         bg="#ffffff"
         bgVariant="wave"

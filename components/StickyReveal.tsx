@@ -35,15 +35,17 @@ export function StickyReveal({
 }) {
   const outerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);
-  const hiddenColor = dark ? "#4b5563" : "#d4d4d4";
 
   useEffect(() => {
     const outer = outerRef.current;
     const heading = headingRef.current;
     if (!outer || !heading) return;
 
-    const spans = heading.querySelectorAll<HTMLSpanElement>("span[data-char]");
-    spans.forEach((s) => { s.style.color = hiddenColor; });
+    const spans = heading.querySelectorAll<HTMLSpanElement>("span[data-word]");
+    spans.forEach((s) => {
+      s.style.opacity = "0.15";
+      s.style.transform = "translateY(10px)";
+    });
 
     const update = () => {
       const rect = outer.getBoundingClientRect();
@@ -52,7 +54,13 @@ export function StickyReveal({
       const p = Math.max(0, Math.min(1, scrolledPast / scrollRoom));
       const n = Math.round(spans.length * p);
       spans.forEach((s, i) => {
-        s.style.color = i < n ? "" : hiddenColor;
+        if (i < n) {
+          s.style.opacity = "1";
+          s.style.transform = "translateY(0)";
+        } else {
+          s.style.opacity = "0.15";
+          s.style.transform = "translateY(10px)";
+        }
       });
     };
 
@@ -64,26 +72,31 @@ export function StickyReveal({
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [hiddenColor]);
+  }, []);
 
   const parts: ReactNode[] = [];
   let key = 0;
-  for (const char of text) {
-    if (char === "\n") {
-      parts.push(<br key={`br-${key++}`} />);
-    } else {
+  text.split("\n").forEach((line, lineIdx) => {
+    if (lineIdx > 0) parts.push(<br key={`br-${key++}`} />);
+    line.split(" ").filter(Boolean).forEach((word, wordIdx) => {
+      if (wordIdx > 0) parts.push(" ");
       parts.push(
         <span
-          data-char=""
+          data-word=""
           key={key++}
-          style={{ color: hiddenColor, transition: "color 0.04s linear" }}
+          style={{
+            display: "inline-block",
+            opacity: 0.15,
+            transform: "translateY(10px)",
+            transition: "opacity 0.45s ease-out, transform 0.45s ease-out",
+          }}
           aria-hidden="true"
         >
-          {char === " " ? " " : char}
+          {word}
         </span>
       );
-    }
-  }
+    });
+  });
 
   return (
     <div ref={outerRef} id={id} style={{ height: "250vh", background: bg }}>

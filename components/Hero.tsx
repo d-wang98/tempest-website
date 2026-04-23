@@ -21,7 +21,7 @@ export function Hero() {
             </span>
           </FadeIn>
 
-          {/* Headline — static (above the fold, should be immediately impactful) */}
+          {/* Headline: static (above the fold, should be immediately impactful) */}
           <FadeIn delay={80}>
             <h1 className="text-5xl font-black leading-[1.05] tracking-tight text-gray-900 md:text-7xl">
               Stablecoin Payments,{" "}
@@ -33,7 +33,7 @@ export function Hero() {
           <FadeIn className="mt-6" delay={180}>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-gray-500 md:text-xl">
               Tempest is the non-custodial orchestration layer that makes
-              stablecoin payments simple, trusted, and enterprise-ready—so you
+              stablecoin payments simple, trusted, and enterprise-ready, so you
               can accept, pay, and reconcile across any chain with confidence.
             </p>
           </FadeIn>

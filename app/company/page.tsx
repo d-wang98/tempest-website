@@ -15,7 +15,8 @@ const team = [
     name: "David Wang",
     role: "Co-founder & CEO",
     bg: "Ex-Bloomberg · Carnegie Mellon",
-    bio: "Quantitative analyst at Bloomberg who built models on US Bill of Lading and customs data to analyze global trade flows, shipping risk, and capital impact — turning real-world cargo movement into financial insight.",
+    bio: "Quantitative analyst at Bloomberg who built models on US Bill of Lading and customs data to analyze global trade flows, shipping risk, and capital impact, turning real-world cargo movement into financial insight.",
+    photo: "/assets/images/David_headshot.jpg",
     initials: "DW",
   },
   {
@@ -23,6 +24,7 @@ const team = [
     role: "Co-founder & CTO",
     bg: "Ex-Google · Yale University",
     bio: "Software engineer with 3 years at Google building scalable cloud infrastructure, specializing in third-party developer platforms and distributed systems.",
+    photo: "/assets/images/brian_headshot.jpeg",
     initials: "BL",
   },
 ];
@@ -30,8 +32,11 @@ const team = [
 const advisors = [
   {
     name: "Tony Liu",
-    affiliation: "Blackstone · Wharton",
-    bio: "Brings deep institutional finance and private equity expertise, with experience spanning cross-border capital markets and high-value asset transactions.",
+    role: "Advisor",
+    affiliation: "Managing Director, Blackstone · Wharton MBA",
+    bio: "Previously Managing Director at Blackstone with deep expertise in private equity, cross-border capital markets, and high-value asset transactions. Tony advises Tempest on enterprise go-to-market strategy and institutional partnerships.",
+    highlights: ["Ex-MD, Blackstone", "Private equity", "Wharton MBA"],
+    photo: "/assets/images/tony_headshot.jpeg",
     initials: "TL",
   },
 ];
@@ -108,7 +113,7 @@ export default function CompanyPage() {
             <FadeIn delay={180}>
               <p className="mt-10 max-w-xl text-xl leading-relaxed text-gray-400">
                 We're building the financial infrastructure that lets businesses
-                send, receive, and program payments globally — without the
+                send, receive, and program payments globally, without the
                 friction of the traditional system.
               </p>
             </FadeIn>
@@ -132,7 +137,7 @@ export default function CompanyPage() {
         </Container>
       </section>
 
-      {/* 01 — Mission */}
+      {/* 01: Mission */}
       <section className="border-t border-gray-100 py-24">
         <Container>
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
@@ -149,19 +154,19 @@ export default function CompanyPage() {
               <div className="mt-8 space-y-5 text-[17px] leading-relaxed text-gray-500 max-w-2xl">
                 <p>
                   Cross-border payments still take days. Businesses pay 1–4% in
-                  fees per transaction. Money can't respond to business logic —
-                  every payment requires manual coordination, and nothing is
+                  fees per transaction. Money can't respond to business logic, and
+                  every payment requires manual coordination. Nothing is
                   synchronized with the underlying trade or contract.
                 </p>
                 <p>
                   We believe that's a solvable problem. Stablecoins and
                   programmable payment infrastructure make it possible to settle
                   in seconds, cut costs to near zero, and tie money movement
-                  directly to business events — automatically.
+                  directly to business events, automatically.
                 </p>
                 <p>
                   Tempest is the orchestration layer that makes this real for
-                  businesses. Not a crypto product — a payments product built on
+                  businesses. Not a crypto product, but a payments product built on
                   better rails.
                 </p>
               </div>
@@ -170,7 +175,7 @@ export default function CompanyPage() {
         </Container>
       </section>
 
-      {/* 02 — Problem */}
+      {/* 02: Problem */}
       <section className="border-t border-gray-100 py-24 bg-gray-50/50">
         <Container>
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
@@ -193,7 +198,7 @@ export default function CompanyPage() {
                   {
                     n: "02",
                     title: "Expensive at every step",
-                    body: "FX spreads, wire fees, and reconciliation overhead compound to 1–4% per transaction — a tax on every business that operates globally.",
+                    body: "FX spreads, wire fees, and reconciliation overhead compound to 1–4% per transaction, a significant tax on every business that operates globally.",
                   },
                   {
                     n: "03",
@@ -203,7 +208,7 @@ export default function CompanyPage() {
                   {
                     n: "04",
                     title: "Disconnected from documents",
-                    body: "In trade finance, payments and ownership documents like Bills of Lading are completely out of sync — creating risk, disputes, and delays.",
+                    body: "In trade finance, payments and ownership documents like Bills of Lading are completely out of sync, creating risk, disputes, and delays.",
                   },
                 ].map((item, i) => (
                   <FadeIn key={item.n} delay={i * 60}>
@@ -228,7 +233,7 @@ export default function CompanyPage() {
         </Container>
       </section>
 
-      {/* 03 — Team */}
+      {/* 03: Team */}
       <section className="border-t border-gray-100 py-24">
         <Container>
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
@@ -249,58 +254,61 @@ export default function CompanyPage() {
               </FadeIn>
 
               {/* Founders */}
-              <div className="mt-14 space-y-10">
+              <div className="mt-14 grid gap-6 sm:grid-cols-2">
                 {team.map((person, i) => (
                   <FadeIn key={person.name} delay={100 + i * 80}>
-                    <div className="flex gap-6">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-primary/10 text-sm font-black text-brand-primary">
-                        {person.initials}
+                    <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
+                      <div className="aspect-square w-full overflow-hidden bg-gray-100">
+                        <img
+                          src={person.photo}
+                          alt={person.name}
+                          className="h-full w-full object-cover object-top"
+                        />
                       </div>
-                      <div>
-                        <div className="flex items-baseline gap-3 flex-wrap">
-                          <h3 className="text-base font-black text-gray-900">
-                            {person.name}
-                          </h3>
-                          <span className="text-xs font-semibold text-brand-primary">
-                            {person.role}
-                          </span>
-                        </div>
+                      <div className="p-5">
+                        <h3 className="text-base font-black text-gray-900">{person.name}</h3>
+                        <p className="text-xs font-semibold text-brand-primary mt-0.5">{person.role}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{person.bg}</p>
-                        <p className="mt-2 text-sm leading-relaxed text-gray-500 max-w-xl">
-                          {person.bio}
-                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-gray-500">{person.bio}</p>
                       </div>
                     </div>
                   </FadeIn>
                 ))}
               </div>
 
-              {/* Advisors */}
+              {/* Advisory Board */}
               <div className="mt-14 border-t border-gray-100 pt-10">
                 <FadeIn>
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-8">
-                    Advisors
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">
+                    Advisory Board
+                  </p>
+                  <p className="text-sm text-gray-400 mb-8">
+                    Senior operators and investors who shape our strategy and open doors.
                   </p>
                 </FadeIn>
-                <div className="space-y-8">
+                <div className="grid gap-6 sm:grid-cols-2">
                   {advisors.map((a, i) => (
                     <FadeIn key={a.name} delay={i * 80}>
-                      <div className="flex gap-6">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-xs font-black text-gray-500">
-                          {a.initials}
+                      <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
+                        <div className="aspect-square w-full overflow-hidden bg-gray-100">
+                          <img
+                            src={a.photo}
+                            alt={a.name}
+                            className="h-full w-full object-cover object-top"
+                          />
                         </div>
-                        <div>
-                          <div className="flex items-baseline gap-3">
-                            <h3 className="text-base font-black text-gray-900">
-                              {a.name}
-                            </h3>
-                            <span className="text-xs font-semibold text-gray-400">
-                              {a.affiliation}
-                            </span>
+                        <div className="p-5">
+                          <h3 className="text-base font-black text-gray-900">{a.name}</h3>
+                          <p className="text-xs font-semibold text-brand-primary mt-0.5">{a.role}</p>
+                          <p className="text-xs text-gray-400 mt-0.5">{a.affiliation}</p>
+                          <p className="mt-3 text-sm leading-relaxed text-gray-500">{a.bio}</p>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {a.highlights.map((h) => (
+                              <span key={h} className="rounded-full bg-gray-50 border border-gray-200 px-3 py-1 text-xs font-semibold text-gray-600">
+                                {h}
+                              </span>
+                            ))}
                           </div>
-                          <p className="mt-1.5 text-sm leading-relaxed text-gray-500 max-w-xl">
-                            {a.bio}
-                          </p>
                         </div>
                       </div>
                     </FadeIn>
@@ -312,7 +320,7 @@ export default function CompanyPage() {
         </Container>
       </section>
 
-      {/* 04 — Partners */}
+      {/* 04: Partners */}
       <section className="border-t border-gray-100 py-24 bg-gray-50/50">
         <Container>
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
@@ -328,7 +336,7 @@ export default function CompanyPage() {
                 </h2>
                 <p className="mt-5 text-[17px] leading-relaxed text-gray-500 max-w-2xl">
                   We partner with category-defining companies to deliver a
-                  complete, reliable stack — from stablecoin rails to identity,
+                  complete, reliable stack: stablecoin rails, identity,
                   custody, and trade documents.
                 </p>
               </FadeIn>
@@ -376,7 +384,7 @@ export default function CompanyPage() {
               </h2>
               <p className="mt-6 text-[17px] leading-relaxed text-gray-500">
                 Whether you're exploring stablecoin payments, building a
-                trade finance workflow, or just want to learn more — we'd
+                trade finance workflow, or just want to learn more, we would
                 love to hear from you.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">

@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Wraps children in a div that fades up into view when it enters the viewport.
- * Uses IntersectionObserver + direct DOM mutation — no React re-renders on scroll.
+ * Uses IntersectionObserver + direct DOM mutation with no React re-renders on scroll.
  */
 export function FadeIn({
   children,
