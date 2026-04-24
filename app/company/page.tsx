@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
+import { RequestDemoButton } from "@/components/RequestDemoButton";
 
 export const metadata: Metadata = {
   title: "Company | Tempest",
@@ -125,12 +126,9 @@ export default function CompanyPage() {
                 >
                   Get in touch
                 </a>
-                <a
-                  href="https://app.tempest-pay.com"
-                  className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors"
-                >
-                  Try the platform →
-                </a>
+                <RequestDemoButton className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+                  Request Demo →
+                </RequestDemoButton>
               </div>
             </FadeIn>
           </div>

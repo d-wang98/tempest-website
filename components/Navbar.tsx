@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import { RequestDemoButton } from "./RequestDemoButton";
 
 const nav = [
   { label: "Product", href: "/#product" },
@@ -33,18 +34,9 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href="https://app.tempest-pay.com"
-            className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            Sign In
-          </a>
-          <a
-            href="https://app.tempest-pay.com"
-            className="inline-flex items-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
-          >
-            Get Started
-          </a>
+          <RequestDemoButton className="inline-flex items-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm">
+            Request Demo
+          </RequestDemoButton>
         </div>
 
         <button
@@ -75,12 +67,9 @@ export function Navbar() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="https://app.tempest-pay.com"
-              className="inline-flex justify-center rounded-lg bg-brand-primary px-4 py-2.5 text-sm font-semibold text-white"
-            >
-              Get Started
-            </a>
+            <RequestDemoButton className="inline-flex justify-center rounded-lg bg-brand-primary px-4 py-2.5 text-sm font-semibold text-white">
+              Request Demo
+            </RequestDemoButton>
           </Container>
         </div>
       )}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { DemoModal } from "@/components/DemoModal";
 
 // Default body/UI font: normal width, full weight range
 const zalandoSans = localFont({
@@ -38,7 +39,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${zalandoSans.variable} ${zalandoSansSemiExpanded.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <DemoModal />
+      </body>
     </html>
   );
 }

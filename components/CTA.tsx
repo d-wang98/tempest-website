@@ -1,6 +1,7 @@
 import { Container } from "./Container";
 import { LogoMark } from "./Logo";
 import { FadeIn } from "./FadeIn";
+import { RequestDemoButton } from "./RequestDemoButton";
 
 function BlockPatternBg() {
   const blocks = [
@@ -57,15 +58,12 @@ export function CTA() {
             </FadeIn>
 
             <FadeIn className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row" delay={220}>
-              <a
-                href="https://app.tempest-pay.com"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-base font-bold text-brand-primary hover:bg-gray-50 transition-all shadow-lg sm:w-auto"
-              >
-                Get Started Free
+              <RequestDemoButton className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-base font-bold text-brand-primary hover:bg-gray-50 transition-all shadow-lg sm:w-auto">
+                Request a Demo
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
-              </a>
+              </RequestDemoButton>
               <a
                 href="mailto:david@tempest-pay.com"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/20 transition-all sm:w-auto"

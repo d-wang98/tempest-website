@@ -1,5 +1,6 @@
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
+import { RequestDemoButton } from "./RequestDemoButton";
 
 export function Hero() {
   return (
@@ -40,15 +41,12 @@ export function Hero() {
 
           {/* CTAs */}
           <FadeIn className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row" delay={280}>
-            <a
-              href="https://app.tempest-pay.com"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-all sm:w-auto"
-            >
-              Start for Free
+            <RequestDemoButton className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-all sm:w-auto">
+              Request a Demo
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
-            </a>
+            </RequestDemoButton>
             <a
               href="#how-it-works"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-8 py-3.5 text-base font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50 transition-all sm:w-auto"

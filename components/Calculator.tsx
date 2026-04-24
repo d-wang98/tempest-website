@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { Container } from "./Container";
 import { TextReveal } from "./TextReveal";
 import { FadeIn } from "./FadeIn";
+import { RequestDemoButton } from "./RequestDemoButton";
 
 function fmt(n: number) {
   if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)}M`;
@@ -125,15 +126,12 @@ export function Calculator() {
                   </div>
                 </div>
 
-                <a
-                  href="https://app.tempest-pay.com"
-                  className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white hover:bg-blue-700 transition-all"
-                >
-                  Start saving today
+                <RequestDemoButton className="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white hover:bg-blue-700 transition-all">
+                  Request a Demo
                   <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
-                </a>
+                </RequestDemoButton>
               </div>
               </FadeIn>
             </div>

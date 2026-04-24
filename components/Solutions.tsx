@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Container } from "./Container";
 import { StickyReveal } from "./StickyReveal";
 import { FadeIn } from "./FadeIn";
+import { RequestDemoButton } from "./RequestDemoButton";
 
 const tradeFinanceFeatures = [
   {
@@ -205,15 +206,12 @@ function TradeFinanceTab() {
               in the background.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="https://app.tempest-pay.com"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-brand-primary hover:bg-gray-50 transition-colors"
-              >
-                See It in Action
+              <RequestDemoButton className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-bold text-brand-primary hover:bg-gray-50 transition-colors">
+                Request a Demo
                 <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
-              </a>
+              </RequestDemoButton>
               <a
                 href="mailto:david@tempest-pay.com"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
