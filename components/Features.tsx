@@ -1,18 +1,10 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "./Container";
 import { StickyReveal } from "./StickyReveal";
 import { FadeIn } from "./FadeIn";
 
-type Feature = {
-  title: string;
-  body: string;
-  accent: string;
-  icon: React.ReactNode;
-};
-
-const features: Feature[] = [
+const featureMeta = [
   {
-    title: "Seamless Liquidity Access",
-    body: "Integrated on and off-ramps allow businesses to move between traditional fiat and stablecoins without leaving the platform.",
     accent: "bg-brand-primary/10 text-brand-primary",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -21,8 +13,6 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Institutional Transparency",
-    body: "Clear, immutable audit trail and robust counterparty identification to build trust between stakeholders at every step.",
     accent: "bg-brand-cyan/15 text-cyan-700",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -31,8 +21,6 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Enterprise-Grade Security",
-    body: "Multi-party authorization rules maintain strict internal controls and prevent unauthorized fund movements, without sacrificing speed.",
     accent: "bg-brand-navy/10 text-brand-navy",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -41,8 +29,6 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Deep Ecosystem Integration",
-    body: "Native connectivity with eBL platforms ensures that digital bills of lading and payment triggers work in perfect sync with your workflows.",
     accent: "bg-purple-50 text-purple-700",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -51,8 +37,6 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "Automated Settlement Logic",
-    body: "Programmable rules facilitate automated payment release conditional upon document receipt, milestone completion, or inspection approvals.",
     accent: "bg-green-50 text-green-700",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -61,8 +45,6 @@ const features: Feature[] = [
     ),
   },
   {
-    title: "ERP Connectivity",
-    body: "Built-in integration layers for major ERP systems synchronize trade data with your existing financial records, with no manual re-entry.",
     accent: "bg-orange-50 text-orange-700",
     icon: (
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -70,16 +52,24 @@ const features: Feature[] = [
       </svg>
     ),
   },
-];
+] as const;
 
-export function Features() {
+export async function Features() {
+  const t = await getTranslations("Features");
+
+  const features = featureMeta.map((meta, i) => ({
+    ...meta,
+    title: t(`f${i + 1}title` as never),
+    body: t(`f${i + 1}body` as never),
+  }));
+
   return (
     <>
       <StickyReveal
         id="product"
-        text="Everything your payments stack needs"
-        label="Platform Capabilities"
-        description="We abstract exchanges, blockchains, and wallets into a single flow so stablecoins can be onboarded, sent, and settled easily while unlocking the full power of on-chain tools."
+        text={t("heading")}
+        label={t("label")}
+        description={t("description")}
         className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl"
         bg="#ffffff"
         bgVariant="wave"
@@ -88,7 +78,7 @@ export function Features() {
         <Container>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {features.map((f, i) => (
-              <FadeIn key={f.title} delay={i * 70}>
+              <FadeIn key={i} delay={i * 70}>
                 <div className="group h-full rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md hover:border-brand-primary/20 transition-all">
                   <div className={`inline-flex items-center justify-center rounded-xl p-2.5 ${f.accent}`}>
                     {f.icon}

@@ -1,14 +1,16 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "./Container";
 import { FadeIn } from "./FadeIn";
 
-const stats = [
-  // { value: "$0.18", label: "Avg. transaction cost" },
-  { value: "<3s", label: "Settlement time" },
-  { value: "10+", label: "Chains supported" },
-  { value: "100%", label: "Non-custodial" },
-];
+export async function Stats() {
+  const t = await getTranslations("Stats");
 
-export function Stats() {
+  const stats = [
+    { value: "<3s", label: t("settlementTime") },
+    { value: "10+", label: t("chainsSupported") },
+    { value: "100%", label: t("nonCustodial") },
+  ];
+
   return (
     <section className="border-y border-gray-100 bg-gray-50/60 py-10">
       <Container>

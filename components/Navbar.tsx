@@ -1,18 +1,41 @@
 "use client";
 import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
+import { useRouter, usePathname } from "@/i18n/navigation";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { RequestDemoButton } from "./RequestDemoButton";
 
-const nav = [
-  { label: "Product", href: "/#product" },
-  { label: "Solutions", href: "/#solutions" },
-  { label: "How It Works", href: "/#how-it-works" },
-  { label: "Company", href: "/company" },
+const navHrefs = [
+  { key: "product" as const, href: "/#product" },
+  { key: "solutions" as const, href: "/#solutions" },
+  { key: "howItWorks" as const, href: "/#how-it-works" },
+  { key: "company" as const, href: "/company" },
 ];
+
+function LanguageSwitcher() {
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const toggle = () => {
+    router.replace(pathname, { locale: locale === "en" ? "zh" : "en" });
+  };
+
+  return (
+    <button
+      onClick={toggle}
+      className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors px-2"
+      aria-label="Switch language"
+    >
+      {locale === "en" ? "CN" : "EN"}
+    </button>
+  );
+}
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("Navbar");
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
@@ -22,20 +45,21 @@ export function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => (
+          {navHrefs.map((item) => (
             <a
-              key={item.href}
+              key={item.key}
               href={item.href}
               className="text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
             >
-              {item.label}
+              {t(item.key)}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
+          <LanguageSwitcher />
           <RequestDemoButton className="inline-flex items-center rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm">
-            Request Demo
+            {t("requestDemo")}
           </RequestDemoButton>
         </div>
 
@@ -57,19 +81,22 @@ export function Navbar() {
       {open && (
         <div className="md:hidden border-t border-gray-100 bg-white">
           <Container className="py-4 flex flex-col gap-4">
-            {nav.map((item) => (
+            {navHrefs.map((item) => (
               <a
-                key={item.href}
+                key={item.key}
                 href={item.href}
                 className="text-sm font-medium text-gray-700 hover:text-brand-primary"
                 onClick={() => setOpen(false)}
               >
-                {item.label}
+                {t(item.key)}
               </a>
             ))}
-            <RequestDemoButton className="inline-flex justify-center rounded-lg bg-brand-primary px-4 py-2.5 text-sm font-semibold text-white">
-              Request Demo
-            </RequestDemoButton>
+            <div className="flex items-center gap-3 pt-1">
+              <LanguageSwitcher />
+              <RequestDemoButton className="flex-1 inline-flex justify-center rounded-lg bg-brand-primary px-4 py-2.5 text-sm font-semibold text-white">
+                {t("requestDemo")}
+              </RequestDemoButton>
+            </div>
           </Container>
         </div>
       )}

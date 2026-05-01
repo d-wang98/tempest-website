@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -8,6 +9,7 @@ export function DemoModal() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", company: "", message: "" });
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const t = useTranslations("DemoModal");
 
   useEffect(() => {
     const handler = () => setOpen(true);
@@ -55,10 +57,8 @@ export function DemoModal() {
       <div className="p-8">
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-xl font-black text-gray-900">Request a Demo</h2>
-            <p className="text-sm text-gray-400 mt-1">
-              Tell us about your use case and we&apos;ll be in touch shortly.
-            </p>
+            <h2 className="text-xl font-black text-gray-900">{t("title")}</h2>
+            <p className="text-sm text-gray-400 mt-1">{t("subtitle")}</p>
           </div>
           <button
             onClick={close}
@@ -78,15 +78,13 @@ export function DemoModal() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-base font-bold text-gray-900">We&apos;ll be in touch soon</h3>
-            <p className="mt-2 text-sm text-gray-400">
-              Thanks for reaching out. Expect a response within one business day.
-            </p>
+            <h3 className="text-base font-bold text-gray-900">{t("successTitle")}</h3>
+            <p className="mt-2 text-sm text-gray-400">{t("successDesc")}</p>
             <button
               onClick={close}
               className="mt-6 rounded-xl bg-brand-primary px-6 py-2.5 text-sm font-bold text-white hover:bg-blue-700 transition-colors"
             >
-              Done
+              {t("done")}
             </button>
           </div>
         ) : (
@@ -94,12 +92,12 @@ export function DemoModal() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                  Full Name <span className="text-brand-primary">*</span>
+                  {t("nameRequired")} <span className="text-brand-primary">*</span>
                 </label>
                 <input
                   required
                   type="text"
-                  placeholder="Jane Smith"
+                  placeholder={t("namePlaceholder")}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   className="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-300 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
@@ -107,12 +105,12 @@ export function DemoModal() {
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                  Work Email <span className="text-brand-primary">*</span>
+                  {t("emailRequired")} <span className="text-brand-primary">*</span>
                 </label>
                 <input
                   required
                   type="email"
-                  placeholder="jane@company.com"
+                  placeholder={t("emailPlaceholder")}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-300 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
@@ -121,10 +119,10 @@ export function DemoModal() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1.5">Company</label>
+              <label className="block text-xs font-semibold text-gray-600 mb-1.5">{t("companyLabel")}</label>
               <input
                 type="text"
-                placeholder="Acme Corp"
+                placeholder={t("companyPlaceholder")}
                 value={form.company}
                 onChange={(e) => setForm({ ...form, company: e.target.value })}
                 className="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-300 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
@@ -132,12 +130,10 @@ export function DemoModal() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1.5">
-                What are you looking to solve?
-              </label>
+              <label className="block text-xs font-semibold text-gray-600 mb-1.5">{t("messageLabel")}</label>
               <textarea
                 rows={3}
-                placeholder="We handle cross-border payments and want to reduce settlement time and fees..."
+                placeholder={t("messagePlaceholder")}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className="w-full resize-none rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm text-gray-900 placeholder:text-gray-300 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20"
@@ -146,7 +142,7 @@ export function DemoModal() {
 
             {status === "error" && (
               <p className="text-xs text-red-500">
-                Something went wrong. Please email us directly at{" "}
+                {t("errorText")}{" "}
                 <a href="mailto:david@tempest-pay.com" className="underline">
                   david@tempest-pay.com
                 </a>
@@ -158,12 +154,10 @@ export function DemoModal() {
               disabled={status === "loading"}
               className="w-full rounded-xl bg-brand-primary py-3 text-sm font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-colors disabled:opacity-60"
             >
-              {status === "loading" ? "Sending..." : "Request Demo"}
+              {status === "loading" ? t("submitting") : t("submit")}
             </button>
 
-            <p className="text-center text-xs text-gray-400">
-              We respond within one business day.
-            </p>
+            <p className="text-center text-xs text-gray-400">{t("responseTime")}</p>
           </form>
         )}
       </div>

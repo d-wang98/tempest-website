@@ -1,3 +1,5 @@
+import { setRequestLocale, getTranslations } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -5,62 +7,19 @@ import { Container } from "@/components/Container";
 import { FadeIn } from "@/components/FadeIn";
 import { RequestDemoButton } from "@/components/RequestDemoButton";
 
-export const metadata: Metadata = {
-  title: "Company | Tempest",
-  description:
-    "Build the financial infrastructure for how modern businesses actually operate.",
-};
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
-const team = [
-  {
-    name: "David Wang",
-    role: "Co-founder & CEO",
-    bg: "Ex-Bloomberg · Carnegie Mellon",
-    bio: "Quantitative analyst at Bloomberg who built models on US Bill of Lading and customs data to analyze global trade flows, shipping risk, and capital impact, turning real-world cargo movement into financial insight.",
-    photo: "/assets/images/David_headshot.jpg",
-    initials: "DW",
-  },
-  {
-    name: "Brian Li",
-    role: "Co-founder & CTO",
-    bg: "Ex-Google · Yale University",
-    bio: "Software engineer with 3 years at Google building scalable cloud infrastructure, specializing in third-party developer platforms and distributed systems.",
-    photo: "/assets/images/brian_headshot.jpeg",
-    initials: "BL",
-  },
-];
-
-const advisors = [
-  {
-    name: "Tony Liu",
-    role: "Advisor",
-    affiliation: "Managing Director, Blackstone · Wharton MBA",
-    bio: "Previously Managing Director at Blackstone with deep expertise in private equity, cross-border capital markets, and high-value asset transactions. Tony advises Tempest on enterprise go-to-market strategy and institutional partnerships.",
-    highlights: ["Ex-MD, Blackstone", "Private equity", "Wharton MBA"],
-    photo: "/assets/images/tony_headshot.jpeg",
-    initials: "TL",
-  },
-];
-
-const partners = [
-  {
-    name: "Bridge",
-    desc: "Stablecoin issuance & on/off-ramp rails · a Stripe company",
-  },
-  {
-    name: "Privy",
-    desc: "Embedded wallet & user auth infrastructure",
-  },
-  {
-    name: "Matrixport",
-    desc: "Institutional digital asset services",
-  },
-  {
-    name: "IQAX",
-    desc: "Digital trade document platform",
-    soon: true,
-  },
-];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "CompanyPage" });
+  return { title: t("metaTitle"), description: t("metaDesc") };
+}
 
 function BlockGrid() {
   const blocks = [
@@ -86,16 +45,67 @@ function BlockGrid() {
   );
 }
 
-export default function CompanyPage() {
+export default async function CompanyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("CompanyPage");
+
+  const team = [
+    {
+      name: t("davidName"),
+      role: t("davidRole"),
+      bg: t("davidBg"),
+      bio: t("davidBio"),
+      photo: "/assets/images/David_headshot.jpg",
+      initials: "DW",
+    },
+    {
+      name: t("brianName"),
+      role: t("brianRole"),
+      bg: t("brianBg"),
+      bio: t("brianBio"),
+      photo: "/assets/images/brian_headshot.jpeg",
+      initials: "BL",
+    },
+  ];
+
+  const advisors = [
+    {
+      name: t("tonyName"),
+      role: t("tonyRole"),
+      affiliation: t("tonyAffiliation"),
+      bio: t("tonyBio"),
+      highlights: [t("tonyH1"), t("tonyH2"), t("tonyH3")],
+      photo: "/assets/images/tony_headshot.jpeg",
+      initials: "TL",
+    },
+  ];
+
+  const partners = [
+    { name: "Bridge", desc: t("bridgeDesc") },
+    { name: "Privy", desc: t("privyDesc") },
+    { name: "Matrixport", desc: t("matrixportDesc") },
+    { name: "IQAX", desc: t("iqaxDesc"), soon: true },
+  ];
+
+  const problems = [
+    { n: "01", title: t("p1title"), body: t("p1body") },
+    { n: "02", title: t("p2title"), body: t("p2body") },
+    { n: "03", title: t("p3title"), body: t("p3body") },
+    { n: "04", title: t("p4title"), body: t("p4body") },
+  ];
+
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
 
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-24 bg-white">
-        {/* Blue glow */}
         <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-brand-primary/5 rounded-full blur-3xl" />
-        {/* Block grid top-right */}
         <div className="pointer-events-none absolute -top-4 right-0 opacity-60 hidden lg:block">
           <BlockGrid />
         </div>
@@ -103,19 +113,17 @@ export default function CompanyPage() {
           <div className="max-w-4xl">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-primary mb-8">
-                Company
+                {t("heroLabel")}
               </p>
             </FadeIn>
             <FadeIn delay={80}>
               <h1 className="text-6xl font-black leading-[1.0] tracking-tight text-gray-900 md:text-7xl lg:text-8xl">
-                Money should move like software.
+                {t("heroHeadline")}
               </h1>
             </FadeIn>
             <FadeIn delay={180}>
               <p className="mt-10 max-w-xl text-xl leading-relaxed text-gray-400">
-                We're building the financial infrastructure that lets businesses
-                send, receive, and program payments globally, without the
-                friction of the traditional system.
+                {t("heroDesc")}
               </p>
             </FadeIn>
             <FadeIn delay={260}>
@@ -124,10 +132,10 @@ export default function CompanyPage() {
                   href="mailto:david@tempest-pay.com"
                   className="inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-colors"
                 >
-                  Get in touch
+                  {t("heroCta")}
                 </a>
                 <RequestDemoButton className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-                  Request Demo →
+                  {t("heroCtaSecondary")}
                 </RequestDemoButton>
               </div>
             </FadeIn>
@@ -141,32 +149,17 @@ export default function CompanyPage() {
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-300 pt-1">
-                01 / Mission
+                {t("missionLabel")}
               </p>
             </FadeIn>
             <FadeIn delay={80}>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-4xl">
-                The global financial system is slow, expensive, and disconnected
-                from the way modern businesses actually operate.
+                {t("missionHeading")}
               </h2>
               <div className="mt-8 space-y-5 text-[17px] leading-relaxed text-gray-500 max-w-2xl">
-                <p>
-                  Cross-border payments still take days. Businesses pay 1–4% in
-                  fees per transaction. Money can't respond to business logic, and
-                  every payment requires manual coordination. Nothing is
-                  synchronized with the underlying trade or contract.
-                </p>
-                <p>
-                  We believe that's a solvable problem. Stablecoins and
-                  programmable payment infrastructure make it possible to settle
-                  in seconds, cut costs to near zero, and tie money movement
-                  directly to business events, automatically.
-                </p>
-                <p>
-                  Tempest is the orchestration layer that makes this real for
-                  businesses. Not a crypto product, but a payments product built on
-                  better rails.
-                </p>
+                <p>{t("missionP1")}</p>
+                <p>{t("missionP2")}</p>
+                <p>{t("missionP3")}</p>
               </div>
             </FadeIn>
           </div>
@@ -179,48 +172,23 @@ export default function CompanyPage() {
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-300 pt-1">
-                02 / The Problem
+                {t("problemLabel")}
               </p>
             </FadeIn>
             <FadeIn delay={80}>
               <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-4xl">
-                Four things broken about how money moves today.
+                {t("problemHeading")}
               </h2>
               <ol className="mt-10 space-y-10">
-                {[
-                  {
-                    n: "01",
-                    title: "Slow and fragmented",
-                    body: "Cross-border transactions move through multiple intermediaries with little visibility. What should take seconds takes days.",
-                  },
-                  {
-                    n: "02",
-                    title: "Expensive at every step",
-                    body: "FX spreads, wire fees, and reconciliation overhead compound to 1–4% per transaction, a significant tax on every business that operates globally.",
-                  },
-                  {
-                    n: "03",
-                    title: "No programmability",
-                    body: "Money doesn't respond to business logic. Every conditional payment, escrow, or milestone release requires manual intervention.",
-                  },
-                  {
-                    n: "04",
-                    title: "Disconnected from documents",
-                    body: "In trade finance, payments and ownership documents like Bills of Lading are completely out of sync, creating risk, disputes, and delays.",
-                  },
-                ].map((item, i) => (
+                {problems.map((item, i) => (
                   <FadeIn key={item.n} delay={i * 60}>
                     <li className="flex gap-8">
                       <span className="text-xs font-bold tabular-nums text-gray-300 pt-1.5 shrink-0">
                         {item.n}
                       </span>
                       <div>
-                        <h3 className="text-base font-bold text-gray-900">
-                          {item.title}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-gray-500">
-                          {item.body}
-                        </p>
+                        <h3 className="text-base font-bold text-gray-900">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-gray-500">{item.body}</p>
                       </div>
                     </li>
                   </FadeIn>
@@ -237,31 +205,25 @@ export default function CompanyPage() {
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-300 pt-1">
-                03 / Team
+                {t("teamLabel")}
               </p>
             </FadeIn>
             <div>
               <FadeIn delay={80}>
                 <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-4xl">
-                  Built by people who've seen the problem up close.
+                  {t("teamHeading")}
                 </h2>
                 <p className="mt-5 text-[17px] leading-relaxed text-gray-500 max-w-2xl">
-                  We came from institutions where slow, fragmented payment rails
-                  created real friction every day. We left to fix it.
+                  {t("teamDesc")}
                 </p>
               </FadeIn>
 
-              {/* Founders */}
               <div className="mt-14 grid gap-6 sm:grid-cols-2">
                 {team.map((person, i) => (
                   <FadeIn key={person.name} delay={100 + i * 80}>
                     <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
                       <div className="aspect-square w-full overflow-hidden bg-gray-100">
-                        <img
-                          src={person.photo}
-                          alt={person.name}
-                          className="h-full w-full object-cover object-top"
-                        />
+                        <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top" />
                       </div>
                       <div className="p-5">
                         <h3 className="text-base font-black text-gray-900">{person.name}</h3>
@@ -274,26 +236,19 @@ export default function CompanyPage() {
                 ))}
               </div>
 
-              {/* Advisory Board */}
               <div className="mt-14 border-t border-gray-100 pt-10">
                 <FadeIn>
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-2">
-                    Advisory Board
+                    {t("advisoryBoard")}
                   </p>
-                  <p className="text-sm text-gray-400 mb-8">
-                    Senior operators and investors who shape our strategy and open doors.
-                  </p>
+                  <p className="text-sm text-gray-400 mb-8">{t("advisoryBoardDesc")}</p>
                 </FadeIn>
                 <div className="grid gap-6 sm:grid-cols-2">
                   {advisors.map((a, i) => (
                     <FadeIn key={a.name} delay={i * 80}>
                       <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
                         <div className="aspect-square w-full overflow-hidden bg-gray-100">
-                          <img
-                            src={a.photo}
-                            alt={a.name}
-                            className="h-full w-full object-cover object-top"
-                          />
+                          <img src={a.photo} alt={a.name} className="h-full w-full object-cover object-top" />
                         </div>
                         <div className="p-5">
                           <h3 className="text-base font-black text-gray-900">{a.name}</h3>
@@ -324,18 +279,16 @@ export default function CompanyPage() {
           <div className="grid gap-16 md:grid-cols-[1fr_2fr]">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-300 pt-1">
-                04 / Partners
+                {t("partnersLabel")}
               </p>
             </FadeIn>
             <div>
               <FadeIn delay={80}>
                 <h2 className="text-3xl font-black tracking-tight text-gray-900 md:text-4xl">
-                  Built with the best infrastructure in the space.
+                  {t("partnersHeading")}
                 </h2>
                 <p className="mt-5 text-[17px] leading-relaxed text-gray-500 max-w-2xl">
-                  We partner with category-defining companies to deliver a
-                  complete, reliable stack: stablecoin rails, identity,
-                  custody, and trade documents.
+                  {t("partnersDesc")}
                 </p>
               </FadeIn>
               <div className="mt-12 grid gap-5 sm:grid-cols-2">
@@ -347,18 +300,14 @@ export default function CompanyPage() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold text-gray-900">
-                            {p.name}
-                          </span>
+                          <span className="text-sm font-bold text-gray-900">{p.name}</span>
                           {p.soon && (
                             <span className="rounded-full bg-brand-cyan/20 px-2 py-0.5 text-[10px] font-bold text-cyan-700">
-                              Coming soon
+                              {t("comingSoon")}
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 text-xs leading-relaxed text-gray-400">
-                          {p.desc}
-                        </p>
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-400">{p.desc}</p>
                       </div>
                     </div>
                   </FadeIn>
@@ -375,28 +324,24 @@ export default function CompanyPage() {
           <div className="max-w-2xl">
             <FadeIn>
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-primary mb-6">
-                Get in touch
+                {t("ctaLabel")}
               </p>
               <h2 className="text-4xl font-black tracking-tight text-gray-900 md:text-5xl">
-                Let's build something together.
+                {t("ctaHeading")}
               </h2>
-              <p className="mt-6 text-[17px] leading-relaxed text-gray-500">
-                Whether you're exploring stablecoin payments, building a
-                trade finance workflow, or just want to learn more, we would
-                love to hear from you.
-              </p>
+              <p className="mt-6 text-[17px] leading-relaxed text-gray-500">{t("ctaDesc")}</p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
                   href="mailto:david@tempest-pay.com"
                   className="inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-colors"
                 >
-                  Email us
+                  {t("ctaEmail")}
                 </a>
                 <a
                   href="https://t.me/dwang1215"
                   className="inline-flex items-center gap-2 rounded-xl border border-gray-200 px-6 py-3 text-sm font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50 transition-colors"
                 >
-                  Telegram
+                  {t("ctaTelegram")}
                 </a>
               </div>
             </FadeIn>

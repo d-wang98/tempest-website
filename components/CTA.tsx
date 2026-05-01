@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Container } from "./Container";
 import { LogoMark } from "./Logo";
 import { FadeIn } from "./FadeIn";
@@ -34,7 +35,9 @@ function BlockPatternBg() {
   );
 }
 
-export function CTA() {
+export async function CTA() {
+  const t = await getTranslations("CTA");
+
   return (
     <section className="py-20 md:py-28 bg-brand-navy">
       <Container>
@@ -46,20 +49,19 @@ export function CTA() {
               <LogoMark size={48} />
             </FadeIn>
 
-            <h2 className="text-4xl font-black tracking-tight text-white md:text-5xl">
-              Ready to modernize<br />your payments?
+            <h2 className="text-4xl font-black tracking-tight text-white md:text-5xl whitespace-pre-line">
+              {t("heading")}
             </h2>
 
             <FadeIn className="mt-5" delay={120}>
               <p className="mx-auto max-w-xl text-lg text-white/70">
-                Join businesses already using Tempest to cut payment costs, settle
-                faster, and stay in full control of their funds.
+                {t("description")}
               </p>
             </FadeIn>
 
             <FadeIn className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row" delay={220}>
               <RequestDemoButton className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-base font-bold text-brand-primary hover:bg-gray-50 transition-all shadow-lg sm:w-auto">
-                Request a Demo
+                {t("cta")}
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
@@ -68,14 +70,12 @@ export function CTA() {
                 href="mailto:david@tempest-pay.com"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/20 transition-all sm:w-auto"
               >
-                Contact Sales
+                {t("contactSales")}
               </a>
             </FadeIn>
 
             <FadeIn className="mt-6" delay={320}>
-            <p className="text-sm text-white/50">
-              Enterprise SLA · Non-custodial · USDC & USDT support
-            </p>
+              <p className="text-sm text-white/50">{t("finePrint")}</p>
             </FadeIn>
           </div>
         </div>
