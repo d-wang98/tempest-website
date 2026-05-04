@@ -134,7 +134,7 @@ function TradeFinanceTab() {
                   </svg>
                 </RequestDemoButton>
                 <a
-                  href="mailto:david@tempest-pay.com"
+                  href="mailto:info@tempest-pay.com"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
                 >
                   {t("tfContactSales")}
@@ -203,7 +203,7 @@ function TradeFinanceTab() {
           <h4 className="text-xl font-black text-gray-900">{t("tfCtaTitle")}</h4>
           <p className="mx-auto mt-2 max-w-xl text-sm text-gray-500">{t("tfCtaDesc")}</p>
           <a
-            href="mailto:david@tempest-pay.com"
+            href="mailto:info@tempest-pay.com"
             className="mt-5 inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
           >
             {t("tfCtaButton")}
@@ -236,7 +236,7 @@ function ComingSoonTab({
       <h3 className="text-2xl font-black text-gray-900">{title}</h3>
       <p className="mx-auto mt-3 max-w-md text-base text-gray-500">{desc}</p>
       <a
-        href="mailto:david@tempest-pay.com"
+        href="mailto:info@tempest-pay.com"
         className="mt-6 inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 hover:border-brand-primary hover:text-brand-primary transition-all"
       >
         {waitlist}

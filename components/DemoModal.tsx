@@ -143,8 +143,8 @@ export function DemoModal() {
             {status === "error" && (
               <p className="text-xs text-red-500">
                 {t("errorText")}{" "}
-                <a href="mailto:david@tempest-pay.com" className="underline">
-                  david@tempest-pay.com
+                <a href="mailto:info@tempest-pay.com" className="underline">
+                  info@tempest-pay.com
                 </a>
               </p>
             )}

@@ -129,7 +129,7 @@ export default async function CompanyPage({
             <FadeIn delay={260}>
               <div className="mt-10 flex items-center gap-6">
                 <a
-                  href="mailto:david@tempest-pay.com"
+                  href="mailto:info@tempest-pay.com"
                   className="inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-colors"
                 >
                   {t("heroCta")}
@@ -332,7 +332,7 @@ export default async function CompanyPage({
               <p className="mt-6 text-[17px] leading-relaxed text-gray-500">{t("ctaDesc")}</p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <a
-                  href="mailto:david@tempest-pay.com"
+                  href="mailto:info@tempest-pay.com"
                   className="inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-primary/25 hover:bg-blue-700 transition-colors"
                 >
                   {t("ctaEmail")}

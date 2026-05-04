@@ -14,7 +14,7 @@ export async function Footer() {
     ],
     [t("groupCompany")]: [
       { label: t("linkAbout"), href: "/company" },
-      { label: t("linkContact"), href: "mailto:david@tempest-pay.com" },
+      { label: t("linkContact"), href: "mailto:info@tempest-pay.com" },
       { label: t("linkTwitter"), href: "https://x.com/Tempest_Pay" },
       { label: t("linkTelegram"), href: "https://t.me/dwang1215" },
     ],

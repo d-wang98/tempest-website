@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     },
     body: JSON.stringify({
       from: "Tempest Website <onboarding@resend.dev>",
-      to: ["david@tempest-pay.com"],
+      to: ["info@tempest-pay.com"],
       subject: `Demo Request: ${name}${company ? ` from ${company}` : ""}`,
       html,
       reply_to: email,

@@ -67,7 +67,7 @@ export async function CTA() {
                 </svg>
               </RequestDemoButton>
               <a
-                href="mailto:david@tempest-pay.com"
+                href="mailto:info@tempest-pay.com"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-base font-semibold text-white hover:bg-white/20 transition-all sm:w-auto"
               >
                 {t("contactSales")}
