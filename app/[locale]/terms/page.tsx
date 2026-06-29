@@ -27,7 +27,7 @@ export async function generateMetadata({
 
 const INTRO = [
   "IMPORTANT — PLEASE READ CAREFULLY. These Terms of Service (the “Terms”) form a binding contract between you and Tempest Pay LLC, a New York limited liability company (“Tempest”, “we”, “us” or “our”). By creating an account, clicking “I agree,” or otherwise accessing or using the Tempest platform, website, APIs, smart contracts, or any other product or service we make available (collectively, the “Service”), you agree to be bound by these Terms.",
-  "SECTION 24 CONTAINS A BINDING ARBITRATION AGREEMENT AND A CLASS-ACTION WAIVER. Except where prohibited by law, you and Tempest agree to resolve disputes by individual arbitration and waive the right to participate in class or representative proceedings.",
+  "SECTION 21 CONTAINS A BINDING ARBITRATION AGREEMENT AND A CLASS-ACTION WAIVER. Except where prohibited by law, you and Tempest agree to resolve disputes by individual arbitration and waive the right to participate in class or representative proceedings.",
   "THE SERVICE IS DESIGNED FOR BUSINESSES. You may use the Service only on behalf of a legal entity (a corporation, LLC, partnership, or similar) for bona fide commercial purposes. Consumers and individuals acting for personal, family, or household purposes are not permitted users.",
   "THE SERVICE IS A SOFTWARE PRODUCT, NOT A FINANCIAL SERVICE. Tempest is a software platform sold to businesses on a subscription basis. We do not take custody of fiat currency, we do not hold digital assets on your behalf, we do not effect money transmission, and we do not earn fees tied to the number, value, or volume of your transactions. Fiat on- and off-ramping is provided by Bridge Ventures, Inc. (“Bridge”) under Bridge’s own terms; wallet infrastructure is provided by Privy.io, Inc. (“Privy”); bank-account linking is provided by Plaid Inc. (“Plaid”). See Section 6.",
 ];
@@ -62,7 +62,7 @@ const SECTIONS: LegalSection[] = [
         list: [
           "You are at least 18 years old and have full legal capacity to enter into binding contracts.",
           "You are accessing the Service on behalf of a legal entity validly formed under the laws of an eligible jurisdiction, and you are authorized to bind that entity to these Terms.",
-          "Neither you nor your Organization is a Prohibited Person (defined in Section 11), is located in a Prohibited Jurisdiction (defined in Section 11), or is owned 50% or more by any Prohibited Person.",
+          "Neither you nor your Organization is a Prohibited Person (defined in Section 10), is located in a Prohibited Jurisdiction (defined in Section 10), or is owned 50% or more by any Prohibited Person.",
           "You will use the Service only for bona fide commercial purposes and not for personal, family, or household purposes.",
         ],
       },
@@ -225,7 +225,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Term and Termination",
     body: [
       "These Terms remain in effect for so long as you use the Service. You may terminate at any time by ceasing to use the Service and closing your Account. We may suspend or terminate your access to the Service at any time, for any reason or no reason, including for actual or suspected violation of these Terms, suspected fraud, or to comply with Applicable Law or our risk policies. We will use commercially reasonable efforts to give you notice when feasible.",
-      "Upon termination, the license granted in Section 14 immediately ends, and Sections that by their nature should survive will survive, including Sections 7 (Fees), 8 (Representations), 11 (Taxes), 14 (IP), 16 (Disclaimers), 17 (Limitation of Liability), 18 (Indemnification), 20 (Governing Law and Arbitration), and 21 (Miscellaneous). You remain responsible for amounts owed and for the consequences of any transaction initiated before termination.",
+      "Upon termination, the license granted in Section 14 immediately ends, and Sections that by their nature should survive will survive, including Sections 7 (Fees), 8 (Representations), 11 (Taxes), 14 (IP), 16 (Disclaimers), 17 (Limitation of Liability), 18 (Indemnification), 21 (Governing Law and Arbitration), and 22 (Miscellaneous). You remain responsible for amounts owed and for the consequences of any transaction initiated before termination.",
       "Termination of the Service does not deprive you of access to the Digital Assets in your Org Account. Because Org Accounts are non-custodial smart-contract wallets controlled through the Wallet Provider, you may continue to sign transactions from your Org Account directly with the Wallet Provider or by importing your keys to a compatible wallet client. We will use commercially reasonable efforts to assist with such migration, except where prohibited by Applicable Law.",
     ],
   },
