@@ -5,6 +5,7 @@ import { Container } from "./Container";
 import { StickyReveal } from "./StickyReveal";
 import { FadeIn } from "./FadeIn";
 import { RequestDemoButton } from "./RequestDemoButton";
+import { Link } from "@/i18n/navigation";
 
 const tfFeatureIcons = [
   <svg key="1" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>,
@@ -139,6 +140,15 @@ function TradeFinanceTab() {
                 >
                   {t("tfContactSales")}
                 </a>
+                <Link
+                  href="/trade-finance"
+                  className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition-colors"
+                >
+                  {t("tfSeeFull")}
+                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
             <div className="flex flex-col justify-center gap-4 border-t border-white/10 p-8 md:p-12 lg:border-l lg:border-t-0">

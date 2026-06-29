@@ -1,6 +1,8 @@
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { buildMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Container } from "@/components/Container";
@@ -18,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "CompanyPage" });
-  return { title: t("metaTitle"), description: t("metaDesc") };
+  return buildMetadata({ locale, path: "company", title: t("metaTitle"), description: t("metaDesc") });
 }
 
 function BlockGrid() {
@@ -223,7 +225,7 @@ export default async function CompanyPage({
                   <FadeIn key={person.name} delay={100 + i * 80}>
                     <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
                       <div className="aspect-square w-full overflow-hidden bg-gray-100">
-                        <img src={person.photo} alt={person.name} className="h-full w-full object-cover object-top" />
+                        <Image src={person.photo} alt={person.name} width={480} height={480} className="h-full w-full object-cover object-top" />
                       </div>
                       <div className="p-5">
                         <h3 className="text-base font-black text-gray-900">{person.name}</h3>
@@ -248,7 +250,7 @@ export default async function CompanyPage({
                     <FadeIn key={a.name} delay={i * 80}>
                       <div className="rounded-2xl border border-gray-100 bg-white overflow-hidden shadow-sm">
                         <div className="aspect-square w-full overflow-hidden bg-gray-100">
-                          <img src={a.photo} alt={a.name} className="h-full w-full object-cover object-top" />
+                          <Image src={a.photo} alt={a.name} width={480} height={480} className="h-full w-full object-cover object-top" />
                         </div>
                         <div className="p-5">
                           <h3 className="text-base font-black text-gray-900">{a.name}</h3>

@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes blockFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: var(--target-opacity, 1);
+    transform: scale(1);
+  }
+}
+
+@keyframes blockFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
 
 :root {
   --brand-cyan: #55DCFF;

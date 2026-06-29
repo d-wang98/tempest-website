@@ -78,7 +78,24 @@ function BlockGrid() {
   return (
     <svg width={W * 1.5} height={H * 1.5} viewBox={`0 0 ${W} ${H}`}>
       {blocks.map((b, i) => (
-        <rect key={i} x={b.col * unit} y={b.row * unit} width={unit - 2} height={unit - 2} fill={b.color} opacity={b.opacity} rx={4} />
+        <rect
+          key={i}
+          x={b.col * unit}
+          y={b.row * unit}
+          width={unit - 2}
+          height={unit - 2}
+          fill={b.color}
+          rx={4}
+          style={{
+            "--target-opacity": b.opacity,
+            "--float-duration": `${2.4 + (i % 4) * 0.5}s`,
+            opacity: 0,
+            transformBox: "fill-box",
+            transformOrigin: "center",
+            animation: "blockFadeIn 0.5s ease forwards, blockFloat var(--float-duration) ease-in-out infinite",
+            animationDelay: `${i * 0.08}s, ${0.5 + i * 0.08}s`,
+          } as React.CSSProperties}
+        />
       ))}
     </svg>
   );

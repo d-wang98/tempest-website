@@ -9,6 +9,7 @@ import { RequestDemoButton } from "./RequestDemoButton";
 const navHrefs = [
   { key: "product" as const, href: "/#product" },
   { key: "solutions" as const, href: "/#solutions" },
+  { key: "tradeFinance" as const, href: "/trade-finance" },
   { key: "howItWorks" as const, href: "/#how-it-works" },
   { key: "company" as const, href: "/company" },
 ];

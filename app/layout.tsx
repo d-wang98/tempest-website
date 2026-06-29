@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { getLocale } from "next-intl/server";
+import { StructuredData } from "@/components/StructuredData";
+import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 
 const zalandoSans = localFont({
   src: "../public/assets/fonts/ZalandoSans-Variable.ttf",
@@ -18,7 +20,32 @@ const zalandoSansSemiExpanded = localFont({
 });
 
 export const metadata: Metadata = {
-  icons: { icon: "/assets/images/logo_only.png" },
+  metadataBase: new URL(SITE_URL),
+  title: "Tempest: Stablecoin Payments for Modern Business",
+  description:
+    "Tempest is the non-custodial stablecoin orchestration layer that makes cross-border payments simple, trusted, and enterprise-ready.",
+  applicationName: "Tempest",
+  icons: {
+    icon: "/assets/images/logo_only.png",
+    shortcut: "/assets/images/logo_only.png",
+    apple: "/assets/images/logo_only.png",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Tempest",
+    url: SITE_URL,
+    title: "Tempest: Stablecoin Payments for Modern Business",
+    description:
+      "The non-custodial stablecoin orchestration layer for modern business. Accept, pay, and reconcile across any chain.",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Tempest" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@Tempest_Pay",
+    title: "Tempest: Stablecoin Payments for Modern Business",
+    description: "The non-custodial stablecoin orchestration layer for modern business.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default async function RootLayout({
@@ -31,6 +58,7 @@ export default async function RootLayout({
     <html lang={locale} className={`${zalandoSans.variable} ${zalandoSansSemiExpanded.variable}`}>
       <body>
         {children}
+        <StructuredData />
       </body>
     </html>
   );
