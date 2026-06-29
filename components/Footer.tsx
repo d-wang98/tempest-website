@@ -21,8 +21,8 @@ export async function Footer() {
       { label: t("linkLinkedin"), href: "https://www.linkedin.com/company/tempest-pay/" },
     ],
     [t("groupLegal")]: [
-      { label: t("linkPrivacy"), href: "#" },
-      { label: t("linkTerms"), href: "#" },
+      { label: t("linkPrivacy"), href: "/privacy" },
+      { label: t("linkTerms"), href: "/terms" },
     ],
   };
 
